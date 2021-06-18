@@ -7,25 +7,23 @@ import {
   YAxis,
   Label,
   ResponsiveContainer,
+  Legend,
+  Tooltip,
   // eslint-disable-next-line import/no-unresolved
 } from 'recharts';
 import Title from './Title';
 
 // Generate Sales Data
-function createData(time, amount) {
-  return { time, amount };
+function createData(date, death, recovered) {
+  return { date, death, recovered };
 }
 
 const data = [
-  createData('00:00', 0),
-  createData('03:00', 300),
-  createData('06:00', 600),
-  createData('09:00', 800),
-  createData('12:00', 1500),
-  createData('15:00', 2000),
-  createData('18:00', 2400),
-  createData('21:00', 2400),
-  createData('24:00', undefined),
+  createData('12 Jun', 313, 5292),
+  createData('13 Jun', 149, 4655),
+  createData('14 Jun', 237, 6143),
+  createData('15 Jun', 164, 6407),
+  createData('16 Jun', 196, 6229),
 ];
 
 export default function Chart() {
@@ -33,33 +31,43 @@ export default function Chart() {
 
   return (
     <React.Fragment>
-      <Title>Today</Title>
+      <Title>Tren Kasus di Indonesia</Title>
       <ResponsiveContainer>
         <LineChart
           data={data}
           margin={{
-            top: 16,
+            top: 5,
             right: 16,
             bottom: 0,
             left: 24,
           }}
+          width={7000}
+          height={250}
         >
-          <XAxis dataKey="time" stroke={theme.palette.text.secondary} />
+          <XAxis dataKey="date" stroke={theme.palette.text.secondary} />
           <YAxis stroke={theme.palette.text.secondary}>
             <Label
               angle={270}
               position="left"
               style={{ textAnchor: 'middle', fill: theme.palette.text.primary }}
             >
-              Sales ($)
+              orang
             </Label>
           </YAxis>
           <Line
             type="monotone"
-            dataKey="amount"
+            dataKey="death"
+            stroke={theme.palette.error.main}
+            dot={false}
+          />
+          <Line
+            type="monotone"
+            dataKey="recovered"
             stroke={theme.palette.primary.main}
             dot={false}
           />
+          <Tooltip />
+          <Legend verticalAlign="top" height={25} />
         </LineChart>
       </ResponsiveContainer>
     </React.Fragment>

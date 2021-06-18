@@ -143,7 +143,7 @@ function Dashboard() {
             noWrap
             className={classes.title}
           >
-            Dashboard
+            COVID-19 UPDATE
           </Typography>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
@@ -199,6 +199,9 @@ function Dashboard() {
             </Grid>
           </Grid>
         </Container>
+        <Typography variant="h6" color="inherit" align="center">
+          Last update: June 18, 2021
+        </Typography>
       </main>
     </div>
   );

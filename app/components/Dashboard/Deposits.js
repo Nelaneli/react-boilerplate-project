@@ -1,36 +1,27 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import Link from '@material-ui/core/Link';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Title from './Title';
 
-function preventDefault(event) {
-  event.preventDefault();
-}
-
-const useStyles = makeStyles({
-  depositContext: {
-    flex: 1,
-  },
-});
-
 export default function Deposits() {
-  const classes = useStyles();
   return (
     <React.Fragment>
-      <Title>Recent Deposits</Title>
-      <Typography component="p" variant="h4">
-        $3,024.00
+      <Typography component="p" variant="h5" align="center">
+        Global Case
       </Typography>
-      <Typography color="textSecondary" className={classes.depositContext}>
-        on 15 March, 2019
+      <Title>Confirmed</Title>
+      <Typography component="p" variant="h7">
+        177500592
       </Typography>
-      <div>
-        <Link color="primary" href="#" onClick={preventDefault}>
-          View balance
-        </Link>
-      </div>
+      <Title>Recovered</Title>
+      <Typography component="p" variant="h7">
+        115584768
+      </Typography>
+      <Title>Deaths</Title>
+      <Typography component="p" variant="h7">
+        3843729
+      </Typography>
     </React.Fragment>
   );
 }
